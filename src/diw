@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# docker-ignore-wizard: suggest .dockerignore entries from common stacks
+show_help(){
+  cat <<'USAGE'
+Docker Ignore Wizard
+
+Usage:
+  diw scan [PATH]   Scan a repo and print suggested patterns
+  diw init          Create a .dockerignore with safe defaults
+  diw help          Show help
+USAGE
+}
+
+scan(){
+  local root=.
+  rg --files  >/dev/null 2>&1 || true
+  awk 'BEGIN{print #
