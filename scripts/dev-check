@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# quick smoke to ensure help prints
+if [[ "" != "Docker Ignore Wizard" ]]; then
+  echo "help header mismatch" >&2; exit 1;
+fi
