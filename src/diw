@@ -14,6 +14,29 @@ USAGE
 }
 
 scan(){
-  local root=.
-  rg --files  >/dev/null 2>&1 || true
-  awk 'BEGIN{print #
+  local root=${1:-.}
+  # warm up ripgrep if present; ignore failures
+  rg --files "$root" >/dev/null 2>&1 || true
+  awk 'BEGIN{print "# build artifacts"; print "node_modules/"; print "dist/"; print "target/"; print "__pycache__/"; print "*.pyc"; print "*.log"; print "coverage/"; print "*.tsbuildinfo"; print ".DS_Store"}' /dev/null
+}
+
+init_file(){
+  local out=.dockerignore
+  if [ -f "$out" ]; then
+    echo "refusing to overwrite existing $out" >&2
+    return 1
+  fi
+  scan . > "$out"
+  echo "wrote $out"
+}
+
+main(){
+  case ${1:-help} in
+    scan) shift; scan "$@";;
+    init) init_file;;
+    help|--help|-h) show_help;;
+    *) echo "unknown command: $1"; show_help; return 2;;
+  esac
+}
+
+main "$@"
