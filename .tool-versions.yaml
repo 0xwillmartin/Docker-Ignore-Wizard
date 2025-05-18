@@ -1,0 +1,5 @@
+package: docker-ignore-wizard
+commands:
+  - name: diw
+    path: src/diw
+    description: Docker Ignore Wizard CLI
