@@ -1,3 +1,8 @@
 # Docker Ignore Wizard
 
-A small CLI to help generate context-aware .dockerignore files based on your repo layout.
+Small CLI that suggests sensible `.dockerignore` entries.
+
+Usage
+- `src/diw help` — show commands
+- `src/diw scan` — print recommended patterns
+- `src/diw init` — write a `.dockerignore` if missing
