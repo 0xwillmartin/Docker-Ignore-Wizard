@@ -1,12 +1,12 @@
 # Ignore common junk
+# project specific
+__pycache__/
+*.tsbuildinfo
 node_modules/
-.DS_Store
+.env.local
 *.log
 coverage/
-dist/
-__pycache__/
-# project specific
+.DS_Store
 .vscode/
 .idea/
-.env.local
-*.tsbuildinfo
+dist/
